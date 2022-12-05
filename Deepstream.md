@@ -10,6 +10,9 @@
  - Use case of DeepStream - Suhana productivity analysis 
 There are 15 streams and three different detection model which are as    follows - 			YOLOv4 is used for detecting trucks, YOLOv4 is used  for    detecting workers and supervisor and YOLOv4 for detecting top    view    of    the truck .All the detection from these  	 streams is     being    converted    into events and messages using MessageConverter . This  MessageConverter plugin enables a user to create a  custom  schema.
 - MessageBroker plugin - This plugin allows you to publish DeepStream    messages 	 using kafka. These messages from kafka are     consumed by three different consumers which perform special    operations on the detection and insert the result in    postgreSQL/timescale . These raw detection will be queried    periodically using custom SQL queries/command . These custom queries    will bucket the raw detections in time buckets comprising of 15secs    buckets. Now as these bucket are queried for inferring cycles which    determine the arrival and departure of trucks.
+- 
+![consumer1](https://user-images.githubusercontent.com/117342086/205556665-cb92b33b-c7e6-4242-9942-b7f68d7db59c.png)
+![consumer2](https://user-images.githubusercontent.com/117342086/205556780-efcfa4de-365c-4f3a-ba1a-80a36fe6a7dc.png)
 
 Next, you have to group departure and arrival cycles. After grouping you have to use the timings of arrivals and departure to query out the following feature.
 i. Worker_count
